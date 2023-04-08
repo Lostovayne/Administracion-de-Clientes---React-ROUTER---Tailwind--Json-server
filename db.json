@@ -42,6 +42,22 @@
       "telefono": "+56956041663",
       "notas": "cccccccccccccccc",
       "id": 6
+    },
+    {
+      "nombre": "sadsad",
+      "empresa": "ssss",
+      "email": "mkjk@gmail.com",
+      "telefono": "98665656",
+      "notas": "sxdddd",
+      "id": 7
+    },
+    {
+      "nombre": "clientenuevo",
+      "empresa": "chile",
+      "email": "mail@mail.com",
+      "telefono": "956241564656",
+      "notas": "hola mundop",
+      "id": 8
     }
   ]
 }
