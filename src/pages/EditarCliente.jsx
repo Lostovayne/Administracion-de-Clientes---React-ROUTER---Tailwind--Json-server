@@ -1,6 +1,6 @@
-import { Form, useLoaderData, useNavigate } from 'react-router-dom'
-import { Formulario } from '../Componentes'
-import { obtenerCliente } from '../data'
+import { Form, redirect, useActionData, useLoaderData, useNavigate } from 'react-router-dom'
+import { Error, Formulario } from '../Componentes'
+import { actualizarCliente, obtenerCliente } from '../data'
 
 export async function loader({ params }) {
 	const cliente = await obtenerCliente(params.clienteId)
@@ -36,13 +36,14 @@ export async function action({ request, params }) {
 		return errores
 	}
 	//Actualizar el cliente
-	await agregarCliente(datos)
+	await actualizarCliente(params.clienteId, datos)
 	return redirect('/')
 }
 
 const EditarCliente = () => {
 	const navigate = useNavigate()
 	const cliente = useLoaderData()
+	const errores = useActionData()
 	return (
 		<>
 			<h1 className='font-black text-4xl text-blue-900'>Editar Cliente</h1>
@@ -56,14 +57,14 @@ const EditarCliente = () => {
 				</button>
 			</div>
 			<div className='bg-white shadow rounded-md  md:w-3/4  mx-auto px-5 py-10 mt-2 '>
-				{/* {errores?.length && errores.map((error, i) => <Error key={i}> {error} </Error>)} */}
+				{errores?.length && errores.map((error, i) => <Error key={i}> {error} </Error>)}
 
 				<Form method='POST' noValidate>
 					<Formulario cliente={cliente} />
 					<input
 						type='submit'
 						className='w-full mt-5 p-3  uppercase bg-blue-800 font-bold text-white text-lg'
-						value='Registrar nuevo cliente'
+						value='Editar cliente'
 					/>
 				</Form>
 			</div>
