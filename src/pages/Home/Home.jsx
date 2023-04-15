@@ -6,6 +6,8 @@ function loader() {
 	const clientes = obtenerClientes()
 	return clientes
 }
+
+// nice
 const Home = () => {
 	const clientes = useLoaderData()
 	return (
